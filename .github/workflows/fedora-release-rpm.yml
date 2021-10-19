@@ -1,0 +1,23 @@
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  fedora-release-rpm:
+    runs-on: ubuntu-latest
+    container: fedora:34
+    steps:
+      - uses: actions/checkout@v2
+      - name: install tools and dependencies
+        run: |
+          dnf install -y rpm-build findutils clang-tools-extra 'dnf-command(builddep)'
+          dnf builddep -y mouse_m908.spec
+      - name: build mouse_m908 rpm package
+        run: |
+          make -j4 rpm
+      - name: upload rpm package
+        uses: actions/upload-artifact@v2
+        with:
+          name: mouse_m908-$GITHUB_RUN_ID
+          path: mouse_m908-3.2-1.x86_64.rpm
