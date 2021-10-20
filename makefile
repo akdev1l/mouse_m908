@@ -7,7 +7,7 @@ ETC_DIR = /etc
 
 # compiler options
 CC = c++
-CC_OPTIONS := -std=c++17 -Wall -Wextra -O2 `pkg-config --cflags libusb-1.0`
+CC_OPTIONS := -std=c++17 -Wall -Wextra -O2 `pkg-config --cflags libusb-1.0` -g
 LIBS != pkg-config --libs libusb-1.0
 
 # version string
