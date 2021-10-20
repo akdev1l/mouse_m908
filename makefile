@@ -55,8 +55,8 @@ rpm:
 	+rpmbuild --buildroot $(PWD)/rpmbuild/BUILDROOT --define "_topdir $(PWD)/rpmbuild" -bb mouse_m908.spec
 
 # this builds .src.rpm for Fedora/RHEL systems
-src-rpm:
-	rpmbuild --buildroot $(PWD)/rpmbuild/BUILDROOT --define "_topdir $(PWD)/rpmbuild" -bs mouse_m908.spec
+srpm:
+	+rpmbuild --buildroot $(PWD)/rpmbuild/BUILDROOT --define "_topdir $(PWD)/rpmbuild" -bs mouse_m908.spec
 
 # this builds a .hpkg package on Haiku
 hpkg:
