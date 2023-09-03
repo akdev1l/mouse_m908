@@ -13,8 +13,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: install tools and dependencies
         run: |
-          dnf install -y rpm-build findutils clang-tools-extra 'dnf-command(builddep)'
-          dnf builddep -y mouse_m908.spec
+          dnf install -y rpm-build findutils clang-tools-extra rpkg 'dnf-command(builddep)'
+          rpkg spec --outdir $PWD
+          dnf builddep -y mouse_m908*.spec
       - name: build mouse_m908 rpm package
         run: |
           make -j4 rpm
